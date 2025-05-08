@@ -20,10 +20,9 @@ import Select from '@mui/material/Select'
 
 const Selection = () => {
   // Refs
-  const { questions, setQuestions, page, setPage } = React.useContext(context)  
+  const { no, setNo, questions, setQuestions, page, setPage } = React.useContext(context)  
 
-  // States
-  const [no, setNo] = React.useState(10)
+  // States  
   const [category, setCategory] = React.useState(9)
   const [difficulty, setDifficulty] = React.useState('easy')
 
@@ -35,8 +34,8 @@ const Selection = () => {
       difficulty
     })
 
-    await setQuestions(previous => [...previous, ...data])
     setPage('quiz')
+    setQuestions(previous => [...previous, ...data])
   }
 
   const changeNo = (e) => {
@@ -62,7 +61,7 @@ const Selection = () => {
   return (
     <>
       <h1>Selection</h1>
-      <div className="selection">
+      <div className="selection" style={{ borderColor: `#${Math.floor(Math.random()*16777215).toString()}` }}>
         <Box
           sx={{
             display: 'flex',
